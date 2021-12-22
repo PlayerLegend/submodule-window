@@ -5,4 +5,4 @@
 #include "def.h"
 #endif
 
-void window_path_cat (window_char * result, const range_const_char * a, char sep, const range_const_char * b);
+void window_path_cat (window_char * target, char sep, const range_const_char * append);

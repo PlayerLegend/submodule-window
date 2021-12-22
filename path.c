@@ -6,13 +6,12 @@
 #include "string.h"
 #include "alloc.h"
 
-void window_path_cat (window_char * result, const range_const_char * a, char sep, const range_const_char * b)
+void window_path_cat (window_char * target, char sep, const range_const_char * append)
 {
-    window_rewrite (*result);
-    window_strcpy_range (result, a);
-    if (!range_is_empty (result->region) && result->region.end[-1] != sep)
+    if (!range_is_empty (target->region) && target->region.end[-1] == sep)
     {
-	*window_push (*result) = sep;
+	*window_push (*target) = sep;
     }
-    window_strcat_range (result, b);
+
+    window_strcat_range (target, append);
 }
