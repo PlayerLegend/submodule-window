@@ -2,12 +2,11 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 #define FLAT_INCLUDES
 #include "../../range/def.h"
 #include "../def.h"
 #include "../printf.h"
-
-#include "../../debug/debug.h"
 
 void test_window_printf()
 {

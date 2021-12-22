@@ -6,7 +6,6 @@
 #include "../alloc.h"
 
 #include "../../log/log.h"
-#include "../../debug/debug.h"
 
 range_typedef(int, int);
 window_typedef(int, int);
