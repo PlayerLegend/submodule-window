@@ -1,4 +1,5 @@
 #include <stddef.h>
+#include <assert.h>
 #define FLAT_INCLUDES
 #include "../range/def.h"
 #include "def.h"
