@@ -9,10 +9,19 @@
 
 void window_path_cat (window_char * target, char sep, const range_const_char * append)
 {
-    if (!range_is_empty (target->region) && target->region.end[-1] == sep)
+    while (!range_is_empty (target->region) && target->region.end[-1] == sep)
     {
-	*window_push (*target) = sep;
+	target->region.end--;
     }
+    
+    range_const_char append_mod = *append;
+
+    while (!range_is_empty (append_mod) && *append_mod.begin == sep)
+    {
+	append_mod.begin++;
+    }
+
+    *window_push (*target) = sep;
 
     window_strcat_range (target, append);
 }
