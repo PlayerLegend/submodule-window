@@ -6,3 +6,4 @@
 #endif
 
 void window_path_cat (window_char * target, char sep, const range_const_char * append);
+void window_path_resolve (window_char * target, char sep);

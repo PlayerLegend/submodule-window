@@ -27,7 +27,8 @@ void window_strcpy (window_char * dest, const char * str)
 
 void window_strcat_range (window_char * dest, const range_const_char * src)
 {
-    window_append_bytes ( (window_unsigned_char*) dest, (const unsigned char*) src->begin, range_count (*src));
+    window_append_bytes_range((window_unsigned_char*) dest, (const range_const_unsigned_char*) src);
+    //window_append_bytes ( (window_unsigned_char*) dest, (const unsigned char*) src->begin, range_count (*src));
     add_terminator (dest);
 }
 

@@ -1,9 +1,13 @@
 #include <stddef.h>
 #include <assert.h>
+#include <stdbool.h>
 #define FLAT_INCLUDES
 #include "../../range/def.h"
+#include "../../range/string.h"
 #include "../def.h"
 #include "../alloc.h"
+#include "../string.h"
+#include "../path.h"
 
 #include "../../log/log.h"
 
@@ -31,9 +35,28 @@ void test_push ()
     }
 }
 
+void test_path_cat()
+{
+    window_char path = {0};
+
+    range_const_char arg;
+
+    window_strcat (&path, "asdf////");
+
+    range_string_init (&arg, "///bcle");
+
+    window_path_cat (&path, '/', &arg);
+
+    assert (range_streq_string(&path.region.const_cast, "asdf/bcle"));
+
+    window_clear (path);
+}
+
 int main()
 {
     test_push();
+
+    test_path_cat();
 
     return 0;
 }
