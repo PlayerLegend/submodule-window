@@ -41,13 +41,21 @@ void test_path_cat()
 
     range_const_char arg;
 
-    window_strcat (&path, "asdf////");
+    window_strcat_string (&path, "asdf////");
 
     range_string_init (&arg, "///bcle");
 
     window_path_cat (&path, '/', &arg);
 
     assert (range_streq_string(&path.region.const_cast, "asdf/bcle"));
+
+    window_rewrite (path);
+
+    range_string_init (&arg, "1234/5678");
+
+    window_path_cat (&path, '/', &arg);
+
+    assert (range_streq_string(&path.region.const_cast, "/1234/5678"));
 
     window_clear (path);
 }

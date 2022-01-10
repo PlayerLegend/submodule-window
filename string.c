@@ -13,16 +13,16 @@ inline static void add_terminator (window_char * dest)
     dest->region.end--;
 }
 
-void window_strcat (window_char * dest, const char * str)
+void window_strcat_string (window_char * dest, const char * str)
 {
     window_append_bytes ( (window_unsigned_char*) dest, (const unsigned char*)str, strlen (str));
     add_terminator (dest);
 }
 
-void window_strcpy (window_char * dest, const char * str)
+void window_strcpy_string (window_char * dest, const char * str)
 {
     window_rewrite (*dest);
-    window_strcat (dest, str);
+    window_strcat_string (dest, str);
 }
 
 void window_strcat_range (window_char * dest, const range_const_char * src)
