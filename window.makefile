@@ -8,12 +8,12 @@ test/window: src/window/test/window.test.o
 test/window: src/window/alloc.o
 test/window: src/window/string.o
 test/window: src/window/path.o
-test/window: src/range/range_strdup.o
-test/window: src/range/range_streq_string.o
+test/window: src/range/strdup.o
+test/window: src/range/streq_string.o
 test/window: src/range/string_tokenize.o
 test/window: src/range/streq.o
 test/window: src/range/strchr.o
-test/window: src/range/range_strdup.o
+test/window: src/range/strdup.o
 test/window: src/range/string_init.o
 test/window: src/log/log.o
 
