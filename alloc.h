@@ -23,7 +23,7 @@ void _window_clear (window_void * window);
 */
 
 #define window_clear(window)						\
-    _window_clear ( (window_void*) &(window) )
+    _window_clear ( &(window).void_cast )
 /**<
    @brief Frees the memory allocated to the given window and sets all pointers in the window to NULL
 */

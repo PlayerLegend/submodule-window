@@ -9,8 +9,10 @@
    Provides a definition for an arbitrarily resizeable and shiftable array of items. A window here is comprised of two ranges as defined in src/range.h. The 'alloc' range of a window contains the total memory allocated to the window, and the 'region' range of a window describes the used portion of the allocated memory.
 */
 
+typedef struct { range_void region; range_void alloc; } window_void;
+
 #define window_typedef(window_type, window_name, ...)	\
-    typedef union { struct { range_##window_name region; range_##window_name alloc; }; __VA_ARGS__; } window_##window_name;
+    typedef union { struct { range_##window_name region; range_##window_name alloc; }; window_void void_cast; __VA_ARGS__; } window_##window_name;
 /**<
    @brief Creates a typedef for a window
    @param window_type The type of the window
@@ -28,7 +30,6 @@
    @brief Resets the window's region to be 0 indices wide and at the beginning of the window's allocation
 */
 
-window_typedef(void, void);
 window_typedef(char, char);
 window_typedef(unsigned char, unsigned_char, window_char signed_cast);
 window_typedef(char*, string);
