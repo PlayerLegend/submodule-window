@@ -9,6 +9,7 @@
 #include "string.h"
 #include "alloc.h"
 #include "../log/log.h"
+#include <stdlib.h>
 
 void window_path_cat (window_char * target, char sep, const range_const_char * append)
 {
@@ -43,6 +44,8 @@ void window_path_resolve (window_char * target, char sep)
 
     range_strdup (&copy, &target->region.const_cast);
 
+    char * copy_free = copy.begin;
+    
     range_const_char token;
 
     range_typedef (range_const_char, token);
@@ -77,10 +80,13 @@ void window_path_resolve (window_char * target, char sep)
 	window_strcat_range (target, add_token);
     }
 
-    if (is_absolute_path)
+    if (!is_absolute_path)
     {
 	target->region.begin++;
     }
 
     assert (is_absolute_path == (*target->region.begin == sep));
+
+    window_clear(path);
+    free(copy_free);
 }
