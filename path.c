@@ -42,7 +42,7 @@ void window_path_resolve (window_char * target, char sep)
     
     range_char copy;
 
-    range_strdup (&copy, &target->region.const_cast);
+    range_strdup (&copy, &target->region.alias_const);
 
     char * copy_free = copy.begin;
     
@@ -53,7 +53,7 @@ void window_path_resolve (window_char * target, char sep)
 
     window_token path = {0};
 
-    while (range_string_tokenize(&token, sep, &copy.const_cast))
+    while (range_string_tokenize(&token, sep, &copy.alias_const))
     {
 	if (range_is_empty (token) || range_streq_string (&token, "."))
 	{

@@ -47,7 +47,7 @@ void test_path_cat()
 
     window_path_cat (&path, '/', &arg);
 
-    assert (range_streq_string(&path.region.const_cast, "asdf/bcle"));
+    assert (range_streq_string(&path.region.alias_const, "asdf/bcle"));
 
     window_rewrite (path);
 
@@ -55,7 +55,7 @@ void test_path_cat()
 
     window_path_cat (&path, '/', &arg);
 
-    assert (range_streq_string(&path.region.const_cast, "/1234/5678"));
+    assert (range_streq_string(&path.region.alias_const, "/1234/5678"));
 
     window_clear (path);
 }
